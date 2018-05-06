@@ -1,0 +1,19 @@
+{
+  "name": "scraper",
+  "version": "1.0.0",
+  "description": "Web Site Scraper",
+  "main": "scraper.js",
+  "scripts": {
+    "test": "none"
+  },
+  "keywords": [
+    "Web",
+    "Site",
+    "Scraper"
+  ],
+  "author": "Steve Martin",
+  "license": "MIT",
+  "dependencies": {
+    "json2csv": "^4.1.2"
+  }
+}
