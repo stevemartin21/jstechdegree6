@@ -57,11 +57,17 @@ request('http://shirts4mike.com/shirts.php', function (error, response, html) {
 				$('.products li a').each(function(key, value){
 					shirtLinks = $(this).attr('href');  
 					// shirtlines equalls all the links to each page and looped over;
-					newLinks = ' http://shirts4mike.com/' + shirtLinks;
+					newLinks = 'http://shirts4mike.com/' + shirtLinks;
 					console.log(newLinks);
-				});
+				
+
+			//	for (i=0; i<newlinks.length; i++){
+
+				//}
 				
 				// second request to each new link to be able to grab price, title, imageURl and url
+
+				var results=[];
 
 				request(newLinks, function(error, response, body){
 					var $ = cheerio.load(body);
@@ -73,8 +79,11 @@ request('http://shirts4mike.com/shirts.php', function (error, response, html) {
 					var time = d;
 
 					//var results = [];
+
 					
-					var results = {title,price, imageUrl, url, time};
+					results = {title,price, imageUrl , url ,time};
+
+					
 					//added variables to object to be able add to the csv 
 					const fields = ['title', 'price', 'imageUrl','url', 'time'];
 			//create title fields for the csv
@@ -83,11 +92,15 @@ request('http://shirts4mike.com/shirts.php', function (error, response, html) {
 					const csv = json2csvParser.parse(results);
 				// parse results of the request 
 
-					fs.writeFile(`./data/${fileDate}.csv` , csv , function (err) {
+					fs.appendFile(`./data/${fileDate}.csv` , csv , function (err) {
   					if (err) throw err;
   					console.log('CSV has Been created!');
 					});
+				});	
+				
 			});
+
+
 		}else if(!response.statusCode ===200){
 			console.error('There is an error with your internet connection' + error.message)
 		}
