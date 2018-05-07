@@ -14,6 +14,9 @@
   "author": "Steve Martin",
   "license": "MIT",
   "dependencies": {
-    "json2csv": "^4.1.2"
+    "cheerio": "^1.0.0-rc.2",
+    "http": "0.0.0",
+    "json2csv": "^4.1.2",
+    "request": "^2.85.0"
   }
 }
